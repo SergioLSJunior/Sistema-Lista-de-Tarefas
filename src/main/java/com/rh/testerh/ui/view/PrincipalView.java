@@ -25,6 +25,8 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -74,9 +76,9 @@ public class PrincipalView extends VerticalLayout {
             return null;
         });
 
-        createGridColumn(grid, Tarefas::getNome, Dictionary.NOME);
-        createGridColumn(grid, Tarefas::getCusto, Dictionary.CUSTO);
-        createGridColumn(grid, Tarefas::getDtLimite, Dictionary.DATA_LIMITE);
+        createGridColumn(grid, Tarefas::getNome, Dictionary.NOME, String.class);
+        createGridColumn(grid, Tarefas::getCusto, Dictionary.CUSTO, BigDecimal.class);
+        createGridColumn(grid, Tarefas::getDtLimite, Dictionary.DATA_LIMITE, LocalDate.class);
         Grid.Column<Tarefas> editColumn = grid.addComponentColumn(event -> {
             Button editButton = new Button(new Icon(VaadinIcon.EDIT));
             editButton.addClickListener(e -> {
